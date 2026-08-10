@@ -1,0 +1,194 @@
+/* src/features/habitos/Habitos.css */
+.habitos-main {
+  background-color: #09090b;
+  padding: 35px 45px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* --- HEADER PRINCIPAL --- */
+.habitos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px; /* Reducido para dar paso a los insights */
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.habitos-title { font-size: 28px; font-weight: 700; color: #ffffff; margin: 0 0 4px 0; letter-spacing: -0.5px; }
+.habitos-subtitle { font-size: 15px; color: #a1a1aa; margin: 0; }
+.habitos-subtitle strong { color: #f4f4f5; }
+
+.header-actions-pro { display: flex; align-items: center; gap: 16px; }
+
+/* Navegación del tiempo */
+.timeline-nav {
+  display: flex;
+  background-color: #121214;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 4px;
+}
+.t-nav-btn {
+  background: transparent; border: none; color: #a1a1aa;
+  padding: 6px 10px; border-radius: 6px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600; transition: all 0.2s;
+}
+.t-nav-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.05); color: #fff; }
+.t-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn-hoy { color: #e4e4e7; min-width: 60px; }
+
+.btn-nuevo-pro {
+  background-color: #f4f4f5; color: #09090b; border: none;
+  padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 13px;
+  display: flex; align-items: center; gap: 6px; cursor: pointer; transition: transform 0.2s;
+}
+.btn-nuevo-pro:hover { transform: translateY(-2px); }
+
+/* --- OUTSTANDING INSIGHTS PANEL (ARRIBA) --- */
+.ai-insights-panel {
+  background: linear-gradient(145deg, #18181b 0%, #09090b 100%);
+  border: 1px solid rgba(234, 179, 8, 0.2);
+  border-radius: 16px; 
+  padding: 20px 24px; 
+  margin-bottom: 30px; /* Separación con las tarjetas */
+}
+.ai-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.ai-header h3 { font-size: 14px; font-weight: 600; color: #eab308; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+.ai-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.ai-card { background: rgba(0,0,0,0.3); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.03); }
+.ai-card p { margin: 0; font-size: 13px; color: #a1a1aa; line-height: 1.5; }
+.ai-card p strong { color: #f4f4f5; }
+
+/* --- GRID DE TARJETAS (CARDS) --- */
+.habits-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+.h-empty-state {
+  grid-column: 1 / -1;
+  background: #121214; border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 60px; text-align: center;
+  color: #71717a; display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.h-empty-state h3 { color: #f4f4f5; margin: 0; font-size: 18px; }
+
+/* Tarjeta Individual */
+.habit-card {
+  background-color: #121214;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: transform 0.2s, border-color 0.2s;
+}
+.habit-card:hover { border-color: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
+.hc-top { display: flex; align-items: center; gap: 16px; }
+.hc-icon { font-size: 28px; background: rgba(255,255,255,0.03); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 12px; }
+.hc-info { display: flex; flex-direction: column; gap: 4px; flex: 1; overflow: hidden; }
+.hc-name { font-size: 16px; font-weight: 600; color: #f4f4f5; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hc-type { font-size: 11px; color: #71717a; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.hc-menu { background: transparent; border: none; color: #52525b; cursor: pointer; padding: 6px; border-radius: 6px; }
+.hc-menu:hover { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+
+/* --- INTERFACES ADAPTATIVAS (Middle) --- */
+.hc-middle { display: flex; flex-direction: column; justify-content: center; min-height: 60px; }
+
+/* 1. Acción Binaria */
+.h-action-binary { width: 100%; }
+.btn-binary {
+  width: 100%; padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
+  background: transparent; color: #a1a1aa; font-weight: 600; font-size: 14px;
+  display: flex; justify-content: center; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s;
+}
+.btn-binary:hover:not(:disabled) { background: rgba(255,255,255,0.05); color: #fff; }
+.btn-binary.done { background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.3); color: #10b981; }
+.btn-binary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* 2. Contador Acumulativo */
+.h-action-counter { display: flex; flex-direction: column; gap: 12px; }
+.counter-stats { display: flex; align-items: baseline; gap: 6px; }
+.c-current { font-size: 28px; font-weight: 700; color: #f4f4f5; line-height: 1; }
+.c-current small { font-size: 14px; color: #a1a1aa; font-weight: 500; }
+.c-goal { font-size: 14px; color: #71717a; font-weight: 600; }
+
+.counter-progress-bar { width: 100%; height: 8px; background: #27272a; border-radius: 4px; overflow: hidden; }
+.c-fill { height: 100%; border-radius: 4px; transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.4s; }
+.bar-red { background-color: #ef4444; }
+.bar-yellow { background-color: #f59e0b; }
+.bar-green { background-color: #10b981; }
+
+.counter-controls { display: flex; justify-content: space-between; align-items: center; }
+.c-btn { background: #18181b; border: 1px solid rgba(255,255,255,0.08); color: #a1a1aa; width: 32px; height: 32px; border-radius: 8px; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+.c-btn:hover:not(:disabled) { background: rgba(255,255,255,0.05); color: #fff; }
+.c-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.c-quick-adds { display: flex; gap: 8px; }
+.c-btn-quick { background: rgba(255,255,255,0.05); border: none; color: #e4e4e7; padding: 6px 14px; border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; transition: background 0.2s; }
+.c-btn-quick:hover:not(:disabled) { background: rgba(255,255,255,0.1); }
+.c-btn-quick.primary { background: #6366f1; color: #fff; width: 100%; padding: 10px; }
+.c-btn-quick.primary:hover:not(:disabled) { background: #4f46e5; }
+.c-btn-quick:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* 3. Acción Semanal */
+.h-action-weekly { display: flex; flex-direction: column; gap: 16px; }
+.w-dots { display: flex; gap: 8px; }
+.w-dot { width: 12px; height: 12px; border-radius: 50%; background: #27272a; border: 2px solid transparent; }
+.w-dot.filled { background: #10b981; border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 0 10px rgba(16,185,129,0.3); }
+.w-controls { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.w-status { font-size: 13px; font-weight: 600; color: #a1a1aa; }
+
+/* --- MINI CALENDARIO INFERIOR --- */
+.hc-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px; }
+.mini-week-cal { display: flex; justify-content: space-between; }
+.mini-day { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.md-label { font-size: 10px; color: #71717a; font-weight: 600; }
+.mini-day.today .md-label { color: #f4f4f5; }
+.mini-day.future .md-bubble { opacity: 0.2; }
+
+.md-bubble { width: 16px; height: 16px; border-radius: 50%; background: #27272a; transition: all 0.2s; }
+/* CORRECCIÓN: Color Verde para igualar la barra de progreso */
+.md-bubble.done { background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.2); }
+.md-bubble.partial { background: #f59e0b; }
+.mini-day.today .md-bubble:not(.done):not(.partial) { border: 1px dashed #52525b; background: transparent; }
+
+/* --- MODALES Y FORMS --- */
+.compact-modal { max-width: 400px; }
+.row-group { display: flex; gap: 12px; align-items: stretch; position: relative; }
+.flex-1 { flex: 1; }
+
+.custom-emoji-wrapper { position: relative; }
+.emoji-trigger { background: #000; border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; font-size: 20px; padding: 0 16px; border-radius: 8px; height: 100%; cursor: pointer; transition: border-color 0.2s; }
+.emoji-popover { position: absolute; top: 100%; left: 0; margin-top: 8px; background: #18181b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; z-index: 1000; width: 200px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+.emoji-option { font-size: 20px; text-align: center; cursor: pointer; padding: 8px; border-radius: 8px; transition: background 0.2s; }
+.emoji-option:hover { background: rgba(255,255,255,0.08); }
+
+.habit-input { background: #000; border: 1px solid rgba(255, 255, 255, 0.1); color: #f4f4f5; padding: 12px 14px; border-radius: 8px; font-size: 14px; outline: none; width: 100%; }
+.habit-input:focus { border-color: #6366f1; }
+
+.segmented-control { display: flex; background: #000; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 4px; gap: 4px; }
+.segmented-control button { flex: 1; background: transparent; border: none; color: #71717a; padding: 8px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.segmented-control button.active { background: #18181b; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+.segmented-control button:hover:not(.active) { color: #a1a1aa; }
+
+.mt-2 { margin-top: 16px; }
+
+/* Media Queries para Móvil */
+@media (max-width: 768px) {
+  .habitos-main { padding: 20px; }
+  .header-actions-pro { width: 100%; flex-wrap: wrap; }
+  .timeline-nav { flex: 1; justify-content: space-between; }
+  .btn-nuevo-pro { width: 100%; justify-content: center; }
+  .habits-card-grid { grid-template-columns: 1fr; }
+}

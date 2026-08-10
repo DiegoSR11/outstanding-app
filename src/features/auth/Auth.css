@@ -1,0 +1,210 @@
+/* --- 1. RESET Y FONDO PARA CRISTAL REAL --- */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.glass-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Fondo neutro (gris-azulado) para que el cristal blanco resalte */
+  background: #e2e8f0; 
+  overflow: hidden;
+}
+
+/* Orbes detrás del cristal para dar el efecto de refracción líquida */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 1;
+  animation: float 8s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+  width: 350px;
+  height: 350px;
+  background: rgba(255, 184, 0, 0.3); /* Toque de tu amarillo */
+  top: -5%;
+  left: 10%;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: rgba(10, 19, 38, 0.15); /* Toque de tu azul oscuro */
+  bottom: -10%;
+  right: 5%;
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 40px) scale(1.1); }
+}
+
+/* --- 2. LA TARJETA COMPACTA Y DE CRISTAL --- */
+.glass-card {
+  position: relative;
+  z-index: 2; 
+  width: 100%;
+  max-width: 350px; /* MUCHO MÁS PEQUEÑA Y PROPORCIONADA */
+  padding: 35px 30px; /* Menos espacio vacío */
+  margin: auto; /* Evita que se estire de arriba a abajo */
+  
+  /* Efecto Liquid Glass Real */
+  background: rgba(255, 255, 255, 0.45); /* Blanco translúcido */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7); /* Borde blanco como vidrio cortado */
+  border-radius: 20px; /* Curva más sutil */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05); /* Sombra muy ligera */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- 3. LOGOS (COLORES ORIGINALES Y MÁS PEQUEÑOS) --- */
+.glass-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Sin filtros, para que brille tu logo real */
+.glass-logo-icon {
+  width: 55px; /* Más pequeño */
+  margin-bottom: 5px;
+}
+
+.glass-logo-text {
+  width: 130px; /* Más pequeño */
+}
+
+/* --- 4. TEXTOS REDUCIDOS --- */
+.glass-header {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.glass-header h2 {
+  font-family: 'EB Garamond', serif;
+  color: #0A1326; /* Tu azul marca para el texto */
+  font-size: 1.6rem; /* Fuente reducida */
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.glass-header p {
+  color: #64748b; /* Gris neutro */
+  font-size: 0.85rem; /* Fuente reducida */
+  margin: 0;
+}
+
+/* --- 5. FORMULARIO MÁS FINO --- */
+.glass-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-input-group {
+  margin-bottom: 12px;
+}
+
+.glass-input-group input {
+  width: 100%;
+  padding: 10px 14px; /* Campos de texto más delgados */
+  background: rgba(255, 255, 255, 0.6); /* Input un poco más sólido que el fondo */
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  color: #0A1326;
+  font-size: 0.85rem; /* Letra más pequeña */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.glass-input-group input::placeholder {
+  color: #94a3b8;
+}
+
+.glass-input-group input:focus {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #0A1326;
+  box-shadow: 0 0 0 2px rgba(10, 19, 38, 0.1);
+}
+
+.glass-forgot {
+  text-align: right;
+  font-size: 0.75rem; /* Reducido */
+  color: #64748b;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.glass-forgot:hover {
+  color: #0A1326;
+  text-decoration: underline;
+}
+
+/* Botón principal ajustado */
+.glass-btn-primary {
+  width: 100%;
+  padding: 10px; /* Botón menos alto */
+  background-color: #0A1326; /* Azul oscuro elegante */
+  color: #ffffff; 
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem; /* Fuente reducida */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.glass-btn-primary:hover {
+  background-color: #1c2541;
+  transform: translateY(-1px);
+}
+
+/* --- 6. FOOTER --- */
+.glass-footer {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  padding-top: 15px;
+  border-top: 1px solid rgba(10, 19, 38, 0.05);
+}
+
+.glass-footer p {
+  color: #64748b;
+  font-size: 0.8rem; /* Reducido */
+  margin: 0;
+}
+
+.glass-toggle-btn {
+  background: none;
+  border: none;
+  color: #0A1326;
+  font-weight: 600;
+  font-size: 0.8rem; /* Reducido */
+  cursor: pointer;
+  padding: 0 0 0 4px;
+}
+
+.glass-toggle-btn:hover {
+  text-decoration: underline;
+}
