@@ -197,7 +197,7 @@
   
   .routine-calendar-strip {
     flex-direction: column;
-    align-items: stretch;
+    align-items: stretch; /* Estira todos los hijos al ancho del contenedor */
   }
 
   .btn-hoy { align-self: flex-start; margin-bottom: 8px;}
@@ -209,12 +209,13 @@
 
   .strip-days {
     flex: 1;
-    justify-content: flex-start;
+    justify-content: center; /* Centramos el carrusel de días */
   }
   
   .week-grid { 
     display: flex; 
     flex-direction: column; 
+    align-items: stretch; /* FORZAMOS EXPANSIÓN AL 100% EN PANTALLAS MÓVILES */
     height: auto; 
     padding-bottom: 20px; 
     overflow-x: hidden;
@@ -225,6 +226,7 @@
     display: none; 
     height: auto; 
     min-height: 60vh; 
+    width: 100%; /* Asegura que tome todo el espacio lateral */
   }
   
   /* Mostrar SOLO el día seleccionado */
