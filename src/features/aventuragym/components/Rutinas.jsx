@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, addDoc, query, where, onSnapshot, deleteDoc, doc, updateDoc, arrayUnion, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../../../services/firebaseConfig';
-import { Plus, Trash2, ChevronLeft, ChevronRight, Search, Eye } from 'lucide-react';
+import { Plus, Trash2, ChevronLeft, ChevronRight, Search, Activity, Image as ImageIcon, Eye } from 'lucide-react';
 import { EJERCICIOS_DB, CLASES_DB, DIAS_COMPLETOS, DIAS_NOMBRES_CORTOS } from '../data/gymDatabase';
 import './Rutinas.css';
 
@@ -22,7 +22,7 @@ export default function Rutinas() {
 
   // Estados para Eliminar y Visor de Imágenes
   const [itemToDelete, setItemToDelete] = useState(null); 
-  const [viewImage, setViewImage] = useState(null); // Nuevo estado para ver la imagen a pantalla completa
+  const [viewImage, setViewImage] = useState(null);
 
   const user = auth.currentUser;
 
@@ -130,10 +130,13 @@ export default function Rutinas() {
   return (
     <>
       <div className="routine-calendar-strip">
-        <button className="gym-btn-outline" onClick={() => setCurrentDate(new Date())}>Hoy</button>
+        <button className="gym-btn-outline btn-hoy" onClick={() => setCurrentDate(new Date())}>Hoy</button>
+        
         <div className="strip-controls">
           <button className="strip-nav" onClick={() => {const d = new Date(currentDate); d.setDate(d.getDate()-7); setCurrentDate(d);}}><ChevronLeft size={16}/></button>
+          
           <span className="desktop-only week-label">Semana del {weekDays[0].getDate()} de {weekDays[0].toLocaleString('es-ES', {month: 'long'})}</span>
+          
           <div className="strip-days mobile-only">
             {weekDays.map((date, idx) => {
               const isSelected = formatDateStr(date) === selectedDateStr;
@@ -146,6 +149,7 @@ export default function Rutinas() {
               );
             })}
           </div>
+          
           <button className="strip-nav" onClick={() => {const d = new Date(currentDate); d.setDate(d.getDate()+7); setCurrentDate(d);}}><ChevronRight size={16}/></button>
         </div>
       </div>
@@ -191,7 +195,6 @@ export default function Rutinas() {
                             )}
                           </div>
                           
-                          {/* Nuevo Footer con el Ojo y la Basura alineados */}
                           <div className="cc-footer">
                             {rout.isRoutine ? <span className="cc-badge">Rutina</span> : <span className="cc-badge once">Adicional</span>}
                             <div className="cc-actions">
@@ -236,7 +239,7 @@ export default function Rutinas() {
         })}
       </div>
 
-      {/* MODAL: VISOR DE IMÁGENES (Ojo) */}
+      {/* MODAL: VISOR DE IMÁGENES */}
       {viewImage && (
         <div className="gym-modal-overlay" onClick={() => setViewImage(null)}>
           <div className="image-viewer-modal" onClick={e => e.stopPropagation()}>
@@ -251,7 +254,7 @@ export default function Rutinas() {
         <div className="gym-modal-overlay" onClick={() => setShowRoutineModal(false)}>
           <div className="gym-modal add-modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
-              <h3>Agregar para el {targetDayName} {modalTargetDate.getDate()}</h3>
+              <h3>Agregar para el {targetDayName}</h3>
               <button className="close-btn" onClick={() => setShowRoutineModal(false)}>✕</button>
             </div>
             <div className="modal-body">
